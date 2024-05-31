@@ -33,6 +33,19 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Library>().Property(l => l.url).IsRequired().HasMaxLength(1000);
         builder.Entity<Library>().Property(l => l.premium).IsRequired().HasMaxLength(1000);
      
+        builder.Entity<Multimedia>().ToTable("Multimedia");
+        builder.Entity<Multimedia>().HasKey(m => m.id);
+        builder.Entity<Multimedia>().Property(m => m.id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Multimedia>().Property(m => m.title).IsRequired().HasMaxLength(1000);
+        builder.Entity<Multimedia>().Property(m => m.description).IsRequired().HasMaxLength(1000);
+        builder.Entity<Multimedia>().Property(m => m.date)
+            .IsRequired()
+            .HasColumnType("TIMESTAMP")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP")
+            .ValueGeneratedOnAdd();
+        builder.Entity<Multimedia>().Property(m => m.pic).IsRequired().HasMaxLength(1000);
+        builder.Entity<Multimedia>().Property(m => m.url).IsRequired().HasMaxLength(1000);
+        builder.Entity<Multimedia>().Property(m => m.premium).IsRequired().HasMaxLength(1000);
         
         // Apply SnakeCase Naming Convention
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();

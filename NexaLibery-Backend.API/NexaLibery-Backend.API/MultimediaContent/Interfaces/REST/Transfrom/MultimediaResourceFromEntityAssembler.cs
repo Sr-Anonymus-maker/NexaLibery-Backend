@@ -13,7 +13,8 @@ public static class MultimediaResourceFromEntityAssembler
             entity.description,
             entity.date,
             entity.pic,
-            entity.url
+            entity.url,
+            entity.premium
         );
     }
 }

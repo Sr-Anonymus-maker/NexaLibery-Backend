@@ -27,7 +27,7 @@ public class LibraryController(ILibraryCommandService libraryCommandService, ILi
         Description = "Creates a category with a given name",
         OperationId = "CreateLibrary")]
     [SwaggerResponse(201, "The Library material was created", typeof(LibraryResource))]
-    public async Task<IActionResult> CreateCategory([FromBody] CreateLibraryResource createLibraryResource)
+    public async Task<IActionResult> CreateLibrary([FromBody] CreateLibraryResource createLibraryResource)
     {
         if (createLibraryResource.description.Length > 1000) 
         {
@@ -38,7 +38,7 @@ public class LibraryController(ILibraryCommandService libraryCommandService, ILi
         var library = await libraryCommandService.Handle(createLibraryCommand);
         if (library is null) return BadRequest();
         var resource = LibraryResourceFromEntityAssembler.ToResourceEntity(library);
-        return CreatedAtAction(nameof(CreateCategory), new { categoryId = resource.id }, resource);
+        return CreatedAtAction(nameof(CreateLibrary), new { categoryId = resource.id }, resource);
     }
     
     /**
@@ -54,11 +54,11 @@ public class LibraryController(ILibraryCommandService libraryCommandService, ILi
         Description = "Gets all Library",
         OperationId = "GetAllLibrary")]
     [SwaggerResponse(200, "The Library materials were found", typeof(IEnumerable<LibraryResource>))]
-    public async Task<IActionResult> GetAllCategories()
+    public async Task<IActionResult> GetAllLibrary()
     {
         var getAllLibraryQuery = new GetAllLibraryQuery();
-        var categories = await libraryQueryService.Handle(getAllLibraryQuery);
-        var resources = categories.Select(LibraryResourceFromEntityAssembler.ToResourceEntity);
+        var library = await libraryQueryService.Handle(getAllLibraryQuery);
+        var resources = library.Select(LibraryResourceFromEntityAssembler.ToResourceEntity);
         return Ok(resources);
     }
 }

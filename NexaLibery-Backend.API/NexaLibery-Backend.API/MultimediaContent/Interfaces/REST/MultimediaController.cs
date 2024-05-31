@@ -11,54 +11,59 @@ namespace NexaLibery_Backend.API.MultimediaContent.Interfaces.REST;
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class MultimediaController(IMultimediaCommandService multimediaCommandService, IMultimediaQueryService multimediaQueryService) : ControllerBase
+public class MultimediaController : ControllerBase
 {
-    /**
-     * Create Library.
-     * <summary>
-     *     This method is responsible for handling the request to create a new Library material.
-     * </summary>
-     * <param name="createMultimediaResource">The resource containing the information to create a new Library.</param>
-     * <returns>The newly created Library resource.</returns>
-     */
+    private readonly IMultimediaCommandService _multimediaCommandService;
+    private readonly IMultimediaQueryService _multimediaQueryService;
+
+    public MultimediaController(IMultimediaCommandService multimediaCommandService, IMultimediaQueryService multimediaQueryService)
+    {
+        _multimediaCommandService = multimediaCommandService;
+        _multimediaQueryService = multimediaQueryService;
+    }
+
+    /// <summary>
+    /// Create Library.
+    /// This method is responsible for handling the request to create a new Library material.
+    /// </summary>
+    /// <param name="createMultimediaResource">The resource containing the information to create a new Library.</param>
+    /// <returns>The newly created Library resource.</returns>
     [HttpPost]
     [SwaggerOperation(
         Summary = "Creates a Multimedia",
         Description = "Creates a category with a given name",
         OperationId = "CreateMultimedia")]
     [SwaggerResponse(201, "The Multimedia material was created", typeof(MultimediaResource))]
-    public async Task<IActionResult> CreateCategory([FromBody] CreateMultimediaResource createMultimediaResource)
+    public async Task<IActionResult> CreateMultimedia([FromBody] CreateMultimediaResource createMultimediaResource)
     {
-        if (CreateMultimediaResource.description.Length > 1000) 
+        if (createMultimediaResource.description.Length > 1000) 
         {
             return BadRequest("Description is too long.");
         }
         
         var createMultimediaCommand = CreateMultimediaCommandFromResourceAssembler.ToCommandFromEntity(createMultimediaResource);
-        var multimedia = await multimediaCommandService.Handle(createMultimediaCommand);
+        var multimedia = await _multimediaCommandService.Handle(createMultimediaCommand);
         if (multimedia is null) return BadRequest();
         var resource = MultimediaResourceFromEntityAssembler.ToResourceEntity(multimedia);
-        return CreatedAtAction(nameof(CreateCategory), new { categoryId = resource.id }, resource);
+        return CreatedAtAction(nameof(CreateMultimedia), new { categoryId = resource.id }, resource);
     }
     
-    /**
-     * Get All Library content.
-     * <summary>
-     *     This method is responsible for handling the request to get all Multimedia.
-     * </summary>
-     * <returns>The Multimedia resources.</returns>
-     */
+    /// <summary>
+    /// Get All Library content.
+    /// This method is responsible for handling the request to get all Multimedia.
+    /// </summary>
+    /// <returns>The Multimedia resources.</returns>
     [HttpGet]
     [SwaggerOperation(
         Summary = "Gets all Multimedia content",
         Description = "Gets all Multimedia",
         OperationId = "GetAllMultimedia")]
     [SwaggerResponse(200, "The Multimedia materials were found", typeof(IEnumerable<MultimediaResource>))]
-    public async Task<IActionResult> GetAllCategories()
+    public async Task<IActionResult> GetAllMultimedia()
     {
         var getAllMultimediaQuery = new GetAllMultimediaQuery();
-        var categories = await multimediaQueryService.Handle(getAllMultimediaQuery);
-        var resources = categories.Select(MultimediaResourceFromEntityAssembler.ToResourceEntity);
+        var multimedias = await _multimediaQueryService.Handle(getAllMultimediaQuery);
+        var resources = multimedias.Select(MultimediaResourceFromEntityAssembler.ToResourceEntity);
         return Ok(resources);
     }
 }

@@ -11,7 +11,8 @@ public static class CreateMultimediaCommandFromResourceAssembler
             resource.title,
             resource.description,
             resource.pic,
-            resource.url
+            resource.url,
+            resource.premium
         );
     }
 }
