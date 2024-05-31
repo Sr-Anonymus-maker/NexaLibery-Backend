@@ -74,8 +74,9 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
 builder.Services.AddScoped<ILibraryCommandService, LibraryCommandService>();
 builder.Services.AddScoped<ILibraryQueryService, LibraryQueryService>();
+
 builder.Services.AddScoped<IMultimediaRepository, MultimediaRepository>();
-builder.Services.AddScoped<IMultimediaCommandService, IMultimediaCommandService>();
+builder.Services.AddScoped<IMultimediaCommandService, MultimediaCommandService>();
 builder.Services.AddScoped<IMultimediaQueryService, MultimediaQueryService>();
 var app = builder.Build();
 

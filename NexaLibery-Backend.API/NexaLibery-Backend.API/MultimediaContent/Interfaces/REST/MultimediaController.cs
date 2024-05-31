@@ -10,7 +10,7 @@ namespace NexaLibery_Backend.API.MultimediaContent.Interfaces.REST;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-[Produces(MediaTypeNames.Application.Json)]
+
 public class MultimediaController : ControllerBase
 {
     private readonly IMultimediaCommandService _multimediaCommandService;

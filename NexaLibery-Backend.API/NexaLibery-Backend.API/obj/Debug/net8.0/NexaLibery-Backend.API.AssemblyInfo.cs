@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NexaLibery-Backend.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a1b5acfdc2163b426753ef3659fb7a562cdde8d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d38d04b6cb1b252ad48e3ff19b32c65be67b555")]
 [assembly: System.Reflection.AssemblyProductAttribute("NexaLibery-Backend.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NexaLibery-Backend.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
