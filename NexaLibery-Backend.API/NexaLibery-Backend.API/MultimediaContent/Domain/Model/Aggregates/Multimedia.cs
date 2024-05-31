@@ -11,6 +11,8 @@ public class Multimedia
     public string pic { get;private set; }
     public string url { get;private set; }
 
+    public string premium {get; private set; }
+    
     public Multimedia()
     {
         
@@ -22,6 +24,7 @@ public class Multimedia
         this.description = command.description;
         this.pic = command.pic;
         this.url = command.url;
+        this.premium = command.premium;
     }
  
 }

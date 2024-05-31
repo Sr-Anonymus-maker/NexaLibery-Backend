@@ -1,4 +1,4 @@
-﻿﻿using System.Net.Mime;
+﻿using System.Net.Mime;
 using NexaLibery_Backend.API.MultimediaContent.Domain.Model.Queries;
 using NexaLibery_Backend.API.MultimediaContent.Domain.Services;
 using NexaLibery_Backend.API.MultimediaContent.Interfaces.REST.Resources;

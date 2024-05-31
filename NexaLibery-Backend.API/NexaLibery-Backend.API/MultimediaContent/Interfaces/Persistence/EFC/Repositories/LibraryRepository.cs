@@ -1,4 +1,4 @@
-﻿﻿using NexaLibery_Backend.API.MultimediaContent.Domain.Model.Aggregates;
+﻿using NexaLibery_Backend.API.MultimediaContent.Domain.Model.Aggregates;
 using NexaLibery_Backend.API.MultimediaContent.Domain.Repositories;
 using NexaLibery_Backend.API.Shared.Infrastructure.EFC.Repositories;
 using NexaLibery_Backend.API.Shared.Infrastructure.Persistence.EFC.Configuration;
