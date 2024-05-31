@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\NexaLibery-Backend.API.props" />
+</Project>

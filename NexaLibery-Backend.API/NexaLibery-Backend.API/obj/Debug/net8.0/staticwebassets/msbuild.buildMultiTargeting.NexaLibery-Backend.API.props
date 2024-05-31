@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NexaLibery-Backend.API.props" />
+</Project>
