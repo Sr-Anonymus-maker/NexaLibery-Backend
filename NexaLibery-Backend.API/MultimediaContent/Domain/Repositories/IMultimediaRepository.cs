@@ -1,6 +1,9 @@
-﻿namespace NexaLibery_Backend.API.MultimediaContent.Domain.Repositories;
+﻿using NexaLibery_Backend.API.MultimediaContent.Domain.Model.Aggregates;
+using NexaLibery_Backend.API.Shared.Domain.Repositories;
 
-public interface IMultimediaRepository
+namespace NexaLibery_Backend.API.MultimediaContent.Domain.Repositories;
+
+public interface IMultimediaRepository:IBaseRepository<Multimedia>
 {
     
 }

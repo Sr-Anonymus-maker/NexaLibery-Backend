@@ -1,3 +1,3 @@
-﻿namespace NexaLibery_Backend.MultimediaContent.Domain.Model.Queries;
+﻿namespace NexaLibery_Backend.API.MultimediaContent.Domain.Model.Queries;
 
 public record GetAllLibraryQuery();
